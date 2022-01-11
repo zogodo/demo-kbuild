@@ -1,0 +1,81 @@
+choice CLASSICAL_CONFIG
+    prompt "classical config"
+    default MANUAL
+
+    config MANUAL
+        bool "manual."
+    config ONE_CORE_DDR_MODULE_MANUAL_BOOT
+        bool "1 core, ddr module, manual boot."
+        select SOCKET0
+        select SOCKET0_CLUSTER0
+        select SOCKET0_CLUSTER0_CORE0
+    config ONE_CORE_DDR_REAL_AUTO_FRONT_BOOT
+        bool "1 core, real ddr, auto front dorr boot."
+        select SOCKET0
+        select SOCKET0_CLUSTER0
+        select SOCKET0_CLUSTER0_CORE0
+    config TWO_CORE_DDR_REAL_AUTO_BACK_BOOT
+        bool "2 core, real ddr, auto back door boot."
+        select SOCKET0
+        select SOCKET0_CLUSTER0
+        select SOCKET0_CLUSTER0_CORE0
+        select SOCKET0_CLUSTER0_CORE1
+endchoice
+
+config SOCKET0
+    bool "socket0"
+    default y
+config SOCKET0_CLUSTER0
+    bool "socket0 cluster0"
+    depends on SOCKET0
+    default y
+config SOCKET0_CLUSTER0_CORE0
+    bool "socket0 cluster0 core0"
+    depends on SOCKET0_CLUSTER0
+    default y
+config SOCKET0_CLUSTER0_CORE1
+    bool "socket0 cluster0 core1"
+    depends on SOCKET0_CLUSTER0
+    default n
+config SOCKET0_CLUSTER1
+    bool "socket0 cluster1"
+    depends on SOCKET0
+    default y if TWO_CORE_DDR_REAL_AUTO_BACK_BOOT
+config SOCKET0_CLUSTER1_CORE0
+    bool "socket0 cluster1 core0"
+    depends on SOCKET0_CLUSTER1
+    default n
+config SOCKET0_CLUSTER1_CORE1
+    bool "socket0 cluster1 core1"
+    depends on SOCKET0_CLUSTER1
+    default n
+
+config SOCKET1
+    bool "socket1"
+    default n
+config SOCKET1_CLUSTER0
+    bool "socket1 cluster0"
+    depends on SOCKET1
+    default n
+config SOCKET1_CLUSTER0_CORE0
+    bool "socket1 cluster0 core0"
+    depends on SOCKET1_CLUSTER0
+    default n
+config SOCKET1_CLUSTER0_CORE1
+    bool "socket1 cluster0 core1"
+    depends on SOCKET1_CLUSTER0
+    default n
+config SOCKET1_CLUSTER1
+    bool "socket1 cluster1"
+    depends on SOCKET1
+    default n
+config SOCKET1_CLUSTER1_CORE0
+    bool "socket1 cluster1 core0"
+    depends on SOCKET1_CLUSTER1
+    default n
+config SOCKET1_CLUSTER1_CORE1
+    bool "socket1 cluster1 core1"
+    depends on SOCKET1_CLUSTER1
+    default n
+
+
