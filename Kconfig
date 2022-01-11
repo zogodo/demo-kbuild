@@ -93,18 +93,18 @@ config SOCKET1_CLUSTER1_CORE1
 
 # menu "NET Config"
 config SNF
-    int "snf"
-    range 1 70
+    int "SNF"
+    range 1 7
     default 1
 config HNF
-    int "hnf"
-    range 1 70
+    int "HNF"
+    range 1 7
     default 1
 # endmenu
 
 # menu "DDR Config"
 choice DDR_TYPE
-    prompt "ddr type"
+    prompt "DDR type"
     default DDR_TYPE_MODULE
 
     config DDR_TYPE_MODULE
@@ -114,26 +114,26 @@ choice DDR_TYPE
 endchoice
 
 config DDR_SIZE
-    string "ddr size"
+    string "DDR size"
     depends on DDR_TYPE_REAL
     default "16GB"
 config DDR_ECC
-    bool "ddr ecc"
+    bool "DDR ecc"
     depends on DDR_TYPE_REAL
     default n
 config DDR_AES
-    bool "ddr aes"
+    bool "DDR aes"
     depends on DDR_TYPE_REAL
     default n
 config DDR_TZC
-    bool "ddr tzc"
+    bool "DDR tzc"
     depends on DDR_TYPE_REAL
     default n
 # endmenu
 
 # menu "PCIE Config"
 choice PCIE_TYPE
-    prompt "pcie type"
+    prompt "PCIE type"
     default PCIE_TYPE_MODULE
 
     config PCIE_TYPE_MODULE
