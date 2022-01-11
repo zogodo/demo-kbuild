@@ -1,4 +1,4 @@
-menu "CPU Config"
+# menu "CPU Config"
 choice CPU_SELECT
     prompt "cpu config"
     default MANUAL
@@ -89,9 +89,9 @@ config SOCKET1_CLUSTER1_CORE1
     bool "socket1 cluster1 core1"
     depends on SOCKET1_CLUSTER1
     default n
-endmenu
+# endmenu
 
-menu "NET Config"
+# menu "NET Config"
 config SNF
     int "snf"
     range 1 70
@@ -100,9 +100,9 @@ config HNF
     int "hnf"
     range 1 70
     default 1
-endmenu
+# endmenu
 
-menu "DDR Config"
+# menu "DDR Config"
 choice DDR_TYPE
     prompt "ddr type"
     default DDR_TYPE_MODULE
@@ -129,9 +129,9 @@ config DDR_TZC
     bool "ddr tzc"
     depends on DDR_TYPE_REAL
     default n
-endmenu
+# endmenu
 
-menu "PCIE Config"
+# menu "PCIE Config"
 choice PCIE_TYPE
     prompt "pcie type"
     default PCIE_TYPE_MODULE
@@ -139,7 +139,7 @@ choice PCIE_TYPE
     config PCIE_TYPE_MODULE
         bool "module"
 endchoice
-endmenu
+# endmenu
 
 choice BOOT_TYPE
     prompt "Boot type"
