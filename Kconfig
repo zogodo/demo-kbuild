@@ -9,17 +9,28 @@ choice CPU_SELECT
         select SOCKET0
         select SOCKET0_CLUSTER0
         select SOCKET0_CLUSTER0_CORE0
-    config ONE_CORE_DDR_REAL_AUTO_FRONT_BOOT
-        bool "1 core"
-        select SOCKET0
-        select SOCKET0_CLUSTER0
-        select SOCKET0_CLUSTER0_CORE0
-    config TWO_CORE_DDR_REAL_AUTO_BACK_BOOT
+    config TWO_CORE
         bool "2 core"
         select SOCKET0
         select SOCKET0_CLUSTER0
         select SOCKET0_CLUSTER0_CORE0
         select SOCKET0_CLUSTER0_CORE1
+    config ALL_CORE
+        bool "use all core"
+        select SOCKET0
+        select SOCKET0_CLUSTER0
+        select SOCKET0_CLUSTER0_CORE0
+        select SOCKET0_CLUSTER0_CORE1
+        select SOCKET0_CLUSTER1
+        select SOCKET0_CLUSTER1_CORE0
+        select SOCKET0_CLUSTER1_CORE1
+        select SOCKET1
+        select SOCKET1_CLUSTER0
+        select SOCKET1_CLUSTER0_CORE0
+        select SOCKET1_CLUSTER0_CORE1
+        select SOCKET1_CLUSTER1
+        select SOCKET1_CLUSTER1_CORE0
+        select SOCKET1_CLUSTER1_CORE1
 endchoice
 
 config SOCKET0
