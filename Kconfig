@@ -1,21 +1,21 @@
-choice CLASSICAL_CONFIG
-    prompt "classical config"
+choice CPU_SELECT
+    prompt "cpu config"
     default MANUAL
 
     config MANUAL
         bool "manual."
-    config ONE_CORE_DDR_MODULE_MANUAL_BOOT
-        bool "1 core, ddr module, manual boot."
+    config ONE_CORE
+        bool "1 core"
         select SOCKET0
         select SOCKET0_CLUSTER0
         select SOCKET0_CLUSTER0_CORE0
     config ONE_CORE_DDR_REAL_AUTO_FRONT_BOOT
-        bool "1 core, real ddr, auto front dorr boot."
+        bool "1 core"
         select SOCKET0
         select SOCKET0_CLUSTER0
         select SOCKET0_CLUSTER0_CORE0
     config TWO_CORE_DDR_REAL_AUTO_BACK_BOOT
-        bool "2 core, real ddr, auto back door boot."
+        bool "2 core"
         select SOCKET0
         select SOCKET0_CLUSTER0
         select SOCKET0_CLUSTER0_CORE0
@@ -78,4 +78,47 @@ config SOCKET1_CLUSTER1_CORE1
     depends on SOCKET1_CLUSTER1
     default n
 
+config SNF
+    int "snf"
+    range 1 70
+    default 1
 
+config HNF
+    int "hnf"
+    range 1 70
+    default 1
+
+choice DDR_TYPE
+    prompt "ddr type"
+    default MODULE
+
+    config DDR_TYPE_MODULE
+        bool "module"
+    config DDR_TYPE_REAL
+        bool "real"
+endchoice
+
+config DDR_SIZE
+    string "ddr size"
+    depends on DDR_TYPE_REAL
+    default "16GB"
+config DDR_ECC
+    bool "ddr ecc"
+    depends on DDR_TYPE_REAL
+    default n
+config DDR_AES
+    bool "ddr aes"
+    depends on DDR_TYPE_REAL
+    default n
+config DDR_TZC
+    bool "ddr tzc"
+    depends on DDR_TYPE_REAL
+    default n
+
+choice PCIE_TYPE
+    prompt "pcie type"
+    default MODULE
+
+    config PCIE_TYPE_MODULE
+        bool "module"
+endchoice
