@@ -140,3 +140,31 @@ choice PCIE_TYPE
         bool "module"
 endchoice
 endmenu
+
+choice BOOT_TYPE
+    prompt "Boot type"
+    default BOOT_TYPE_MANUAL
+
+    config BOOT_TYPE_MANUAL
+        bool "manual"
+    config BOOT_TYPE_AUTO_FRONT_DOOR
+        bool "auto front door"
+    config BOOT_TYPE_AUTO_BACK_DOOR
+        bool "auto back door"
+endchoice
+
+choice FILE_SYSTEM_TYPE
+    prompt "File system type"
+    default FILE_SYSTEM_TYPE_MINIMUM
+
+    config FILE_SYSTEM_TYPE_MINIMUM
+        bool "minimum"
+    config FILE_SYSTEM_TYPE_STREAM
+        bool "with stream"
+    config FILE_SYSTEM_TYPE_FIO
+        bool "with fio"
+    config FILE_SYSTEM_TYPE_LAT_MEM_RD
+        bool "with lat_mem_rd"
+    config FILE_SYSTEM_TYPE_STREAM_FIO
+        bool "with stream and fio"
+endchoice
