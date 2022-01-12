@@ -6,6 +6,18 @@ Simple script show information for last logins. It can forward output to current
 
 Need KConfig interpritier in system(for example, kconfig-frontends project).
 
+## Befor
+Install kconfig-frontends
+```bash
+# apt-get install kconfig-frontends
+
+yum install autoconf automake libtool
+git clone git@github.com:movidius/kconfig-frontends.git
+cd kconfig-frontends
+./bootstrap
+make &&  make install
+```
+
 ## Using
 First clone repo:
 ```bash
